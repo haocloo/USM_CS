@@ -37,7 +37,6 @@ EXIT3 -->|"False"| IF4
 
 IF2 --> |"False"|IF3
 IF3 --> |"True"|COUNTER3
-IF3 --> |"False"|END
 
 IF4{"length >= 2.1 && width >= 1"}
 DISPLAY4[/"Display 'Rectangle Bertha with 8 seaters'"/]

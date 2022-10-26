@@ -3,21 +3,21 @@
 using namespace std;
 
 int main(){
-    double length,width,templength;
+    double length,width,temp_length;
     int counter = 0;
 
     cout << "Enter length : ";
-    cin >> templength;
+    cin >> temp_length;
     cout << "Enter width : ";
     cin >> width;
 
     //interchange length and width values to make sure length is larger
-    if (width > templength) {  
+    if (width > temp_length) {  
         length = width - (1.6*2); 
-        width = templength - (1.6*2);
+        width = temp_length - (1.6*2);
     }
     else{
-        length = templength - (1.6*2);
+        length = temp_length - (1.6*2);
         width -= (1.6*2);
     }
 
@@ -72,21 +72,22 @@ int main(){
             counter += 1;
             if (counter == 2){
                 exit(0);
-            }
         }
-        if(length >= 0.9 && width >= 0.9){
-            cout << "Square Lea with 4 seaters\n" ; 
-            counter += 1;
-            if (counter == 2){
-                exit(0);
-            }
+    }
+    
+    if(length >= 0.9 && width >= 0.9){
+        cout << "Square Lea with 4 seaters\n" ; 
+        counter += 1;
+        if (counter == 2){
+            exit(0);
         }
+    }
 
-        if(length >= 0.76 && width >= 0.76){
-            cout << "Square Finn with 2 seaters\n" ; 
-            counter += 1;
-            if (counter == 2){
-                exit(0);
-            }
+    if(length >= 0.76 && width >= 0.76){
+        cout << "Square Finn with 2 seaters\n" ; 
+        counter += 1;
+        if (counter == 2){
+            exit(0);
         }
+    }
 }

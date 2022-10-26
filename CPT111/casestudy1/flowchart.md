@@ -46,7 +46,6 @@ EXIT4 -->|"False"| IF5
 
 IF3 --> |"False"|IF4
 IF4 --> |"True"|COUNTER4
-IF4 --> |"False"|END
 
 IF5{"length >= 1.5 && width >= 1.5"}
 DISPLAY5[/"Display 'Round Nadine with 8 seaters'"/]
@@ -56,7 +55,6 @@ EXIT5 -->|"False"| IF6
 
 IF4 --> |"False"|IF5
 IF5 --> |"True"|COUNTER5
-IF5 --> |"False"|END
 
 IF6{"length >= 1.3 && width >= 0.8"}
 DISPLAY6[/"Display 'Rectangle Heinrich with 6 seaters'"/]
@@ -66,7 +64,6 @@ EXIT6 -->|"False"| IF7
 
 IF5 --> |"False"|IF6
 IF6 --> |"True"|COUNTER6
-IF6 --> |"False"|END
 
 IF7{"length >= 1.5 && width >= 0.9"}
 DISPLAY7[/"Display 'Rectangle Niklas with 6 seaters'"/]
@@ -76,7 +73,6 @@ EXIT7 -->|"False"| IF8
 
 IF6 --> |"False"|IF7
 IF7 --> |"True"|COUNTER7
-IF7 --> |"False"|END
 
 IF8{"length >= 1.35 && width >= 1.35"}
 DISPLAY8[/"Display 'Round Emma with 6 seaters'"/]
@@ -86,7 +82,6 @@ EXIT8 -->|"False"| IF9
 
 IF7 --> |"False"|IF8
 IF8 --> |"True"|COUNTER8
-IF8 --> |"False"|END
 
 IF9{"length >= 0.9 && width >= 0.9"}
 DISPLAY9[/"Display 'Square Lea with 4 seaters'"/]
@@ -96,7 +91,6 @@ EXIT9 -->|"False"| IF10
 
 IF8 --> |"False"|IF9
 IF9 --> |"True"|COUNTER9
-IF9 --> |"False"|END
 
 IF10{"length >= 0.76 && width >= 0.76"}
 DISPLAY10[/"Display 'Square Finn with 2 seaters'"/]

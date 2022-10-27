@@ -1,5 +1,6 @@
 //this question allows selection and sequence solving methods only
 #include <iostream>
+#include <cmath>
 using namespace std;
 
 int main(){
@@ -20,6 +21,10 @@ int main(){
         length = temp_length - (1.6*2);
         width -= (1.6*2);
     }
+
+    //to increase precision of length and width when comparing double/floating values
+    length = round(length * 1000.0) / 1000.0;
+    width = round(width * 1000.0) / 1000.0;
 
     //top 2 tables have most seaters with suitable dimension
     if(length >= 3 && width >= 1){
@@ -53,7 +58,7 @@ int main(){
 
     if(length >= 1.3 && width >= 0.8){
         cout << "Rectangle Heinrich with 6 seaters\n" ; 
-        counter += 1;a
+        counter += 1;
         if (counter == 2){
             exit(0);
         }

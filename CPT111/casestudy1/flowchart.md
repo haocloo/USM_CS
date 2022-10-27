@@ -14,7 +14,11 @@ C --> DIMENSION1
 DIMENSION1 --> |"TRUE"|DIMENSION1TRUE
 DIMENSION1 -->|"FALSE"| DIMENSION1FALSE
 
-DIMENSION1TRUE & DIMENSION1FALSE --> IF1 --> |"TRUE"|DISPLAY1 --> COUNTER1
+PRECISION["length = round(length * 1000.0) / 1000.0 <br>
+    width = round(width * 1000.0) / 1000.0</br>"]
+
+DIMENSION1TRUE & DIMENSION1FALSE --> PRECISION --> IF1 --> |"TRUE"|DISPLAY1 --> COUNTER1
+
 
 IF1{"length >= 3 && width >= 1"}
 DISPLAY1[/"Display 'Rectangle Shade with 12 seaters'"/]

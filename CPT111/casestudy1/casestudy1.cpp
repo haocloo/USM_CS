@@ -26,7 +26,7 @@ int main(){
     largest_length = round(largest_length * 1000.0) / 1000.0;
     largest_width = round(largest_width * 1000.0) / 1000.0;
 
-    //top 2 tables have most seaters with suitable dimension
+    //top 2 tables have most seaters with biggest suitable dimension
     if(largest_length >= 3 && largest_width >= 1){
         cout << "Rectangle Shade with 12 seaters\n" ; 
         counter += 1; 

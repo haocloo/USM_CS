@@ -60,8 +60,8 @@ EXIT5 -->|"FALSE"| IF6
 IF4 --> |"FALSE"|IF5
 IF5 --> |"TRUE"|COUNTER5
 
-IF6{"largest_length >= 1.3 && largest_width >= 0.8"}
-DISPLAY6[/"Display 'Rectangle Heinrich with 6 seaters'"/]
+IF6{"largest_length >= 1.35 && largest_width >= 1.35"}
+DISPLAY6[/"Display 'Round Emma with 6 seaters'"/]
 COUNTER6["counter += 1"]
 COUNTER6 --> DISPLAY6 --> EXIT6{"counter == 2"} -->|"TRUE"| END(["End"])
 EXIT6 -->|"FALSE"| IF7
@@ -78,8 +78,8 @@ EXIT7 -->|"FALSE"| IF8
 IF6 --> |"FALSE"|IF7
 IF7 --> |"TRUE"|COUNTER7
 
-IF8{"largest_length >= 1.35 && largest_width >= 1.35"}
-DISPLAY8[/"Display 'Round Emma with 6 seaters'"/]
+IF8{"largest_length >= 1.3 && largest_width >= 0.8"}
+DISPLAY8[/"Display 'Rectangle Heinrich with 6 seaters'"/]
 COUNTER8["counter += 1"]
 COUNTER8 --> DISPLAY8 --> EXIT8{"counter == 2"} -->|"TRUE"| END(["End"])
 EXIT8 -->|"FALSE"| IF9

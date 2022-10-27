@@ -56,11 +56,11 @@ int main(){
         }
     }
 
-    if(largest_length >= 1.3 && largest_width >= 0.8){
-        cout << "Rectangle Heinrich with 6 seaters\n" ; 
-        counter += 1;
-        if (counter == 2){
-            exit(0);
+    if(largest_length >= 1.35 && largest_width >= 1.35){
+            cout << "Round Emma with 6 seaters\n" ; 
+            counter += 1;
+            if (counter == 2){
+                exit(0);
         }
     }
 
@@ -72,11 +72,11 @@ int main(){
         }
     }
 
-    if(largest_length >= 1.35 && largest_width >= 1.35){
-            cout << "Round Emma with 6 seaters\n" ; 
-            counter += 1;
-            if (counter == 2){
-                exit(0);
+    if(largest_length >= 1.3 && largest_width >= 0.8){
+        cout << "Rectangle Heinrich with 6 seaters\n" ; 
+        counter += 1;
+        if (counter == 2){
+            exit(0);
         }
     }
     

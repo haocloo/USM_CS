@@ -24,6 +24,6 @@ int main(){
     cout << "The amount of money Joe paid for the stock : " << 1000*45.5 << endl;
     cout << "The amount of money Joe paid for his broker : " << 1000*45.5*0.02 << endl;
     cout << "The amount that Joe sold the stock for : " << 1000*56.9 << endl;
-    cout << "The amount of commission Joe paid his borker when he sold the stock : " << 1000*56.9* << endl;
-
+    cout << "The amount of commission Joe paid his broker when he sold the stock : " << 1000*56.9*0.02 << endl;
+    cout << "Profit that Joe made after selling his stock and paying the 2 commissions to his broker : " << (1000*56.9*0.98 - 1000*45.5*1.02);
 }

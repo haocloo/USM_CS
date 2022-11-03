@@ -9,6 +9,11 @@
 using namespace std;
 
 int main(){
-    double num1 = 030620;
-    cout << setprecision(2) << num1;
+    int ic,age;
+    cout << "Enter IC number : ";
+    cin >> ic;
+    int age = ic/10000000000;
+    age = 100 - age + 22;
+    cout << "Age is : " << age;
+    return 0;
 }

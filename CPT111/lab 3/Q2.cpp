@@ -39,4 +39,5 @@ int main(){
     cout << "Average rainfall for " << month1 << ", " << month2 << " and " 
         << month3 << " is " << average_rainfall << " inches";
 
+    return 0;
 }

@@ -5,11 +5,12 @@ int main(){
     double distance = 0, time;
     string medium;
     
-    cout << "Enter medium (Carbon Dioxide, Air, Helium or Hydrogen) : ";
-    getline(cin,medium);
-    
     cout << "Enter time taken in seconds : ";
     cin >> time;
+
+    cout << "Enter medium (Carbon Dioxide, Air, Helium or Hydrogen) : ";
+    cin.ignore();
+    getline(cin,medium);
     
     if ((medium == "Carbon Dioxide" || medium == "Air" || medium == "Helium" || medium == "Hydrogen") 
       && time>0 && time <= 30) {

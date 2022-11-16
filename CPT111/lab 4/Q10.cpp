@@ -12,6 +12,7 @@ int main(){
     cin.ignore();
     getline(cin,medium);
     
+    //if want to use switch, make the user enter character or number which represents the list of items
     if ((medium == "Carbon Dioxide" || medium == "Air" || medium == "Helium" || medium == "Hydrogen") 
       && time>0 && time <= 30) {
       

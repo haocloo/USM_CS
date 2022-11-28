@@ -18,6 +18,7 @@ int main(){
             cout << "Too low, try again" << endl;
         attempts++;
     }while(guess != answer);
+    
     cout << "Correct! answer is : " << answer << endl;
     cout << "Attemps : " << attempts;
     return 0;

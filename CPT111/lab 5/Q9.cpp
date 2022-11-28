@@ -2,7 +2,7 @@
 using namespace std;
 int main(){
     char firstC, secondC;
-    int firstnum, secondnum, rows, columns;
+    int firstnum, secondnum, rows, columns, counter = 0;
 
     cout << "Enter a character : ";
     cin >> firstC;
@@ -17,15 +17,27 @@ int main(){
     cout << "Number of columns : ";
     cin >> columns;
 
-    for(int i = 1 ; i <= rows ; i++){
-        for(int i = 1 ; i <= columns ; i++){
-            for(int i = 1 ; i <= firstnum ; i++)
-                cout << firstC;
-            for(int i = 1 ; i <= secondnum ; i++)
-                cout << secondC;
-        }
-        cout << endl;
-    }
+    
+    while true{
+        dimension = rows*columns;
+        while(elements <= dimension)
+            for (int i = 0 ; i < firstnum ; i++)            
+                if(elements > columns)
+                    cout << endl << firstC;
+                else
+                    cout << firstC;
+                elements++;
 
+        if(elements > dimension)
+            break;
+        
+        for (int i = 0 ; i < secondnum ; i++)            
+            if(elements > columns)
+                cout << endl << secondC;
+            else
+                cout << secondC;
+            elements++;
+    }
     return 0;
 }
+

@@ -4,12 +4,14 @@
 using namespace std;
 int main(){
    
-       for (int i = 0; i < 127 ; i++){
-        cout << i << " ";
-        // cout << static_cast<char>(i) << " ";
+       for (char i = 0; i < 127 ; i++){
+        cout << i << " ";        // cout << static_cast<char>(i) << " ";
         if ((i+1) % 16 == 0)     //16 characters each line
             cout << endl;
     }
-    
+
     return 0;
 }
+
+
+

@@ -1,5 +1,7 @@
 #include <iostream>
 #include <iomanip>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 int main(){
 // Q1
@@ -82,6 +84,26 @@ int main(){
     //     }
     //     cout << endl;
     // }
+
+
+// Q3 past year assessment
+    // unsigned int seed = time(0);
+    // srand(seed);
+
+    // int code = rand() % 128;
+
+    // char guess;
+    // cout << code << endl;
+    // do{
+    //     cout << "Guess character : ";
+    //     cin >> guess;
+    //     if (guess < code)
+    //         cout << "Too low" << endl;
+    //     else if (guess > code)
+    //         cout << "Too high" << endl;
+    //     else 
+    //         cout << "Correct!";
+    // } while(guess != code);
 
     return 0;
 }

@@ -42,7 +42,7 @@ int main(){
     string filename;
     cout << "Enter name of file : ";
     cin >> filename;
-    cin.ignore();      // need to clear buffer here
+    // cin.ignore();      // need to clear buffer here
     //filename is Q2.txt
 
     fstream file(filename, ios::out | ios::in | ios::trunc);
@@ -63,8 +63,9 @@ int main(){
         }
         else{
             cout << sentence << endl;      //remember to print next number
-            cout << "Press any key to continue...";
-            cin.get(); 
+            // cout << "Press any key to continue...";
+            system("pause");       //press any key to continue & it will default cout << press any key to continue
+            // cin.get(); 
             // need to clear buffer whenever need ENTER key to continue
             // need to clear buffer outside buffer (same for cin.getline)
         }

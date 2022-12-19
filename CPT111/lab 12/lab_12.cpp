@@ -4,8 +4,8 @@ using namespace std;
 func(int * num1);
 func(int * arr);
 
-func(&num1);
-func(array);
+func(&num1);    //cus int * ptr = &num1
+func(array);   //cus int * ptr = array
 
 
 // reference variables
@@ -13,6 +13,10 @@ func(int &num1);
 
 func(num1)
 
+// file
+func(fstream &);    //make sure prototype after directives
+
+func(file);
 
 //compare pointers
 if(ptr == ptr2) //compare address
@@ -135,7 +139,7 @@ int arrSize(int size){
 
 
 // Question 13
-void bubbleSort(double *, int);
+void bubbleSort(double *, int); //v2 : (double [], int)
 double average(double *, int);
 
 int main(){
@@ -143,7 +147,7 @@ int main(){
     cout << "Enter number of scores : ";
     cin >> size;
 
-    double *scores = new double[size];
+    double *scores = new double[size];  //v2 : double scores[size];
     
     do{
         cout << "Enter score " << i+1 << " : ";
@@ -154,7 +158,7 @@ int main(){
             continue;   // validate element input for array
         }
         else{
-            *(scores + i) = score;
+            scores[i] = score;
             i++;
         }
     }while(i < size);
@@ -170,30 +174,30 @@ void bubbleSort(double * scores, int size){
     int repetition = size-1, temp;
     for(int rept = 1 ; rept <= repetition ; rept++){
         for(int i = 0 ; i < size-1 ; i++){     //remember to -1
-            if(*(scores + i) > *(scores + i+1)){   
-                temp = *(scores + i);           // temp to swap values
-                *(scores + i) = *(scores + i+1);
-                *(scores + i+1) = temp;
+            if(scores[i] > scores[i+1]){      // not necessary use pointer notation
+                temp = scores[i];           // temp to swap values
+                scores[i] = scores[i+1];
+                scores[i+1] = temp;
             }
         }
     }
 
     cout << "The sorted array is : " << endl;
     for(int i = 0 ; i < size ; i++){
-    	cout << *(scores+i) << " ";   //not using return cus return will end function 
+    	cout << scores[i] << " ";   //not using return cus return will end function 
     }
 }
 
 double average(double * scores, int size){
     double total = 0;
     for(int i = 0 ; i < size ; i++){
-        total += *(scores + i);
+        total += scores[i];
     }
     return total/size ;
 
     // drop lowest test score (Question 14)
     for(int i = 1 ; i < size ; i++){
-        total += *(scores + i);
+        total += scores[i];
     }
     return total/(size-1);
 }

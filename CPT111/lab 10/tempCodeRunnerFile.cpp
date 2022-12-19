@@ -1,2 +1,0 @@
-(int [], int);
-int countNegative

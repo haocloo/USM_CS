@@ -18,7 +18,7 @@ double lightYears[1000];
 //Question 2
 int readings[-1];  // This is an error because the array size must be a positive integer.
 float measurements[4.5]  // must be whole number.
-int size;  // should be int size = 10
+int size;  // it's not defining array
 string name[size];
 
 //Question 3
@@ -56,13 +56,13 @@ char alpha[8] = {'J', 'B', 'L', 'A', '*', '$', 'H', 'M'};
 int numbers[10] = {0, 0, 1, 0, 0, 1, 0, 0, 1, 1};
 
 //Question 6b
-//invalid, too many initializers
+//invalid, too many initializers (exceeded subscript given)
 int matrix[5] = {1, 2, 3, 4, 5, 6, 7};
 
 // valid
 double radii[10] = {3.2, 4.7};
 
-//invalid, empty values should be 0
+//invalid, empty values should be null
 int table[7] = {2, , , 27, , 45, 39};
 
 //Question 6c
@@ -189,7 +189,7 @@ int main(){
     for(int i = 0 ; i < 10 ; i++){
         if(nums[i] % 2 == 0){
             if(largest < nums[i]){
-                secondLargestIndex = largestIndex;   //2nd largest index
+                secondLargestIndex = largestIndex;   //2nd largest index (subscript)
                 largestIndex = i;
             }
         }

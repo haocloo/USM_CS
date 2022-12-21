@@ -1,17 +1,20 @@
 #include <iostream>
 using namespace std;
-// pointers
+// pointers and intialize
 func(int * num1);
 func(int * arr);
 
+// call function
 func(&num1);    //cus int * ptr = &num1
 func(array);   //cus int * ptr = array
 
 
-// reference variables
+// reference variables and intialize
 func(int &num1);
 
+// call function
 func(num1)
+
 
 // file
 func(fstream &);    //make sure prototype after directives

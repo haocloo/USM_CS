@@ -180,22 +180,24 @@ int main(){
 
 //Question 19
 int main(){
-    int nums[10];
+    int nums[10], temp;
     for(int i = 0 ; i < 10 ; i++){
         cout << "Enter a number: ";
         cin >> nums[i];
     }
-    int largest = nums[0], largestIndex = 0, secondLargestIndex;
-    for(int i = 0 ; i < 10 ; i++){
-        if(nums[i] % 2 == 0){
-            if(largest < nums[i]){
-                secondLargestIndex = largestIndex;   //2nd largest index (subscript)
-                largestIndex = i;
+
+    //to find 2 largest number , must sort, cus when first 1st input is largest, it wont work
+    for(int i = 0 ; i < 9 ; i++){          
+        for(int j = 0 ; j < 9 ; j++){
+            temp = nums[j+1];
+            if(nums[j] > nums[j+1]){
+                nums[j+1] = nums[j];
+                nums[j] = temp;
             }
         }
     }
-    cout << "Largest even number : " << nums[largestIndex] << endl;
-    cout << "Second largest even number : " << nums[secondLargestIndex] << endl;
+    cout << "Largest even number : " << nums[9] << endl;    //largest number is last element
+    cout << "Second largest even number : " << nums[8] << endl;  //smalest number is 2nd last element
 }
 
 //Question 20

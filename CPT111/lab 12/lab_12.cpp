@@ -174,9 +174,9 @@ int main(){
 }
 
 void bubbleSort(double * scores, int size){
-    int repetition = size-1, temp;
-    for(int rept = 1 ; rept <= repetition ; rept++){
-        for(int i = 0 ; i < size-1 ; i++){     //remember to -1
+    int temp;
+    for(int rept = 0 ; rept < size-1; rept++){
+        for(int i = 0 ; i < size-rept-1 ; i++){     //remember to -1
             if(scores[i] > scores[i+1]){      // not necessary use pointer notation
                 temp = scores[i];           // temp to swap values
                 scores[i] = scores[i+1];

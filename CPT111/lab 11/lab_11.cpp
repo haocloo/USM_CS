@@ -217,7 +217,7 @@ int main(){
 }
 
 void magicSquare(int magic[ROWS][COLS]){
-    int check[7], totalRow = 0, totalCol = 0;
+    int check[8], totalRow = 0, totalCol = 0;
     for(int i = 0; i < 3 ; i++){
         for(int j = 0 ; j < 3 ; j++){
             totalRow += magic[i][j];   //sum of row
@@ -229,9 +229,11 @@ void magicSquare(int magic[ROWS][COLS]){
         totalCol = 0;
     }
     check[6] = magic[0][0] + magic[1][1] + magic[2][2];  //store diagonal total
+    check[7] = magic[2][0] + magic[1][1] + magic[0][2];  //store diagonal total
     
+
     bool isMagic = true;
-    for(int i = 0 ; i < 7-1 ; i++){
+    for(int i = 0 ; i < 8-1 ; i++){
         if(check[i] != check[i+1]){
             isMagic = false; 
         }

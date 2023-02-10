@@ -65,6 +65,7 @@ word[word.length()-1];
 #include <cmath>
 a = sqrt(pow(radius,3.0));
 abs(a-num); //absolute value always outputs integer 
+1%2 // % is remainder
 
 //string formatting
 cout << "Hello" << endl;

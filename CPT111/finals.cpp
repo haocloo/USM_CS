@@ -222,7 +222,8 @@ void func(fstream &file){}
 
 // array
 int arr[1];  //must size > 0 and int only
-double *arrptr = new double[size];   //user input size
+double *arrptr = new double[size];   //user input size (dynamic memory allocation purpose)
+double **arrptr = new double[size][size];   //2d array
 delete [] arrptr;   //delete array
 
 char arr[] = "Hello";

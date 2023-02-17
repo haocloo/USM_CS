@@ -207,17 +207,17 @@ double pass2DArray (int arr[][COLS], int size){}
 
 void func(int *);   // passing pointer
 func(&ptr);         // pass as address
-func(int * ptr){ *ptr = 5; }
+void func(int * ptr){ *ptr = 5; }
 
 
 void func(int &);   // passing reference variable
 func(refVar);
-func(int &refVar){ refVar = 5; }
+void func(int &refVar){ refVar = 5; }
 
 
 void func(fstream &);   // passing file stream, like reference variable
 func(file);
-func(fstream &file){}
+void func(fstream &file){}
 
 
 // array
@@ -244,7 +244,7 @@ size = sizeof(arr)/sizeof(arr[0]);  //size of array
 
 for (int row = 0 ; row < size ; row++){        //print all elements in 2d array
     for(int col = 0 ; col < size ; col++){
-        cout << setw(3) << arr[row][col] << " ";
+        cout << setw(3) << arr[row][col] << " ";    //remember it's row then col
     }
     cout << endl
 }

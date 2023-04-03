@@ -33,7 +33,7 @@ system("pause");   //press any key to continue
 int num;
 do{
     cout << "Enter number";
-    cin >> num    // num is 1-10
+    cin >> num;    // num is 1-10
 }while(num<1 || num>10);   //use OR, remember ALWAYS OPPOSITE of condition
 
 do{}while(num<0);   //positive number
@@ -47,7 +47,7 @@ const double PI = 3.14159;   //const is lower case
 //initialization
 short num = 12345;
 int num = 1, num2 = 2;
-double num = 1.2E10 or 1.2e10
+double num = 1.2E10 or 1.2e10;
 double num = 1.2E-10;
 
 //string vs char declaration

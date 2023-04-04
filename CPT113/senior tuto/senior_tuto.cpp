@@ -1260,11 +1260,3 @@ int main(){
     return 0;
 }
 */
-int main(){
-    Author author1("author1", "Kuala Lumpur", 3);
-    Book book;
-    book.print(author1);
-
-    return 0;
-}
-

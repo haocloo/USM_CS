@@ -221,7 +221,7 @@ int main(){
 */
 
 // W2 Q5
-/*
+// /*
 class Line{
     private:
         double length;
@@ -241,7 +241,7 @@ int main(){
     cout << "Length of line : " << line.getLength() << endl;
     return 0;
 }
-*/
+// */
 
 // W2 Q6
 /*

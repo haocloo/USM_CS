@@ -581,8 +581,8 @@ int main(){
 */
 
 // Tuto IC Q2
-// part 1: Circle
 /*
+// part 1: Circle
 class Circle{
     private:
         double radian, degree, area = 0.0;
@@ -772,4 +772,499 @@ int main(){
     return 0;
 }
 */
+
+// Tuto friend, operator overloading
+// friend function is like a global function but can access private and public members of the class
+
+// friend class allows the befriended class (like composition but composition only public members)
+// to access public + private members of another class
+
+// operator overloading is like a built-in function of the operator used with operator keyword (but cannot use these operators ?: :: .* . sizeof)
+
+// Tuto foo Q1
+/*
+class Cube; // remember to declare
+
+class Shape{
+    private:
+        double height = 0.0, width = 0.0;
+        double HW[2] = {height, width};
+
+    protected:
+        double length = 0.0; // so that can be directly used by derived class without accessor in base(parent) class
+
+    public:
+        // default constructor
+        Shape(){
+            height = 0.0;
+            width = 0.0;
+            length = 0.0;
+            HW[0] = height;
+            HW[1] = width;
+        }
+        // overloaded constructor
+        Shape(double h, double w, double l){
+            height = h;
+            width = w;
+            length = l;
+            HW[0] = height;
+            HW[1] = width;
+        }
+
+        void print() const{
+            cout << "Height: " << height << "\t"
+                << "Width: " << width << "\t"
+                << "Length: " << length << endl;
+        }
+
+        void setVal(double h, double w, double l){
+            height = h;
+            width = w;
+            length = l;
+        }
+
+        double *getHW(){ // or const double* getHW() const{}
+            HW[0] = height;
+            HW[1] = width;
+            return HW;
+        }
+
+        // destructor
+        ~Shape(){
+            // cout << "Shape destructed" << endl;
+        }
+
+        // part 2
+        // mutator (used to change private variables)
+        void setHW(double h, double w){
+            height = h;
+            width = w;
+        }
+};
+
+class Prism : public Shape{
+    friend void compare(Prism p, Cube c);
+    private:
+        double volume;
+
+    public:
+        // default constructor
+        Prism()
+            : Shape(){
+            volume = 0.0;
+        }
+
+        // overloaded constructor
+        Prism(double l, double w, double h, double v)
+            : Shape(l, w, h){
+            volume = v;
+        }
+
+        void print(){ // cannot use const cus getHW isnt constant
+            cout << "length : " << length << "\t"
+                << "width : " << getHW()[0] << "\t"
+                << "height : " << getHW()[1] << endl;
+        }
+
+        void setDimension(double l, double w, double h){
+            setHW(h, w);
+            length = l;
+        }
+
+        double calculateVol(){
+            volume = length * getHW()[0] * getHW()[1];
+            return volume;
+        }
+
+        double surfaceArea(){
+            return 100; // just to make it compile
+        }
+
+        ~Prism(){
+            // cout << "Prism destructed" << endl;
+        }
+};
+
+class Cube: public Shape{
+    friend void compare(Prism p, Cube c);
+    private:
+        double volume;
+        Shape shape;
+    public:
+        Cube(double l, double w, double h, double v)
+            :Shape(l,w,h){
+                volume = v;
+            }
+
+        void print(){
+            print();
+        }
+
+        void setDimension(double l, double w, double h){
+            setHW(h,w);
+            length = l;
+        }
+
+        double calculateVol(){
+            return getHW()[0]*getHW()[1]*length;
+        }
+
+        double surfaceArea(){
+            return length*length*6; 
+        }
+
+        ~Cube(){
+            // cout << "Cube destructed" << endl;
+        }
+};
+
+// Tuto foo Q1a
+void compare(Prism p, Cube c){
+    if(p.calculateVol() > c.calculateVol())
+        cout << "Prism has greate volume" << endl;
+    else
+        cout << "Cube has greater volume" << endl;
+    if(p.surfaceArea() > c.surfaceArea())
+        cout << "Prism has greater surface area" << endl;
+    else
+        cout << "Cube has greater surface area" << endl;
+}  // no need semicolon
+
+// Tuto foo Q1b
+bool operator ==(Prism p, Cube c){  // bool not boolean! , MUST use operator keyword
+    return (p.surfaceArea() == c.surfaceArea() && p.calculateVol() == c.calculateVol());
+}
+
+int main(){
+    // Tuto foo Q1a
+    Prism p(1,2,3,4);
+    Cube c(1,2,3,5);
+
+    compare(p,c);
+
+    // Tuto foo Q1b
+    if(p == c){
+        cout << "Surface area and volume of prism and cube are the same" << endl;
+    }
+    else{
+        cout << "Surface area and volume of prism and cube are not the same" << endl;
+    }
+
+    return 0;
+}
+*/
+
+// Tuto foo Q2
+// inheritance have hierarchy, 
+// friend class is like inheritance, but 2 class unrelated that need to work together only and no hierarchy
+/*
+class Person{
+    private:
+        string name, hometown_state, *schools;
+        int numSchools;
+    public:
+        Person(string name, string hometown_state, int numSchools){
+            this->name = name;
+            this->hometown_state = hometown_state;
+            this->numSchools = numSchools;
+
+            schools = new string[numSchools];
+            setSchools();
+        }
+
+        void print() const{
+            cout << "Name: " << name << endl;
+            cout << "Hometown: " << hometown_state << endl;
+            cout << "Schools: ";
+            for(int i = 0 ; i<numSchools ; i++)
+                cout << schools[i] << " ";
+            cout << endl;
+        }
+
+        void setSchools(){
+            for(int i = 0 ; i<numSchools ; i++){
+                cout << "Enter school " << i+1 << ": ";
+                cin >> schools[i];
+            }
+        }
+        
+        ~Person(){ // not mentioned in question
+            delete [] schools;
+        }
+
+};
+class Student {
+    friend class Person; // making Person class a friend class of student
+    private:
+        int ID;
+        string currentSchool, desa;
+        Person person; // composition, Person class is part of Student class
+    public:
+        Student(string name, string hometown_state, int numSchools, int ID, string currentSchool, string desa)
+            :person(name, hometown_state, numSchools){
+            this->ID = ID;
+            this->currentSchool = currentSchool;
+            this->desa = desa;
+        }
+        
+        void print() const{ // modify so no need argument in main: 
+            person.print();
+            cout << "ID: " << ID << endl
+                << "Current School: " << currentSchool << endl
+                << "Desa: " << desa << endl;
+        }
+        
+};
+
+int main(){
+    Student stud("Ali", "Penang", 5, 123, "school1", "desa1"); //fix this: no need to pass in person class : 
+    stud.print();
+    return 0;
+}
+*/
+
+// Tuto foo Q3
+/*
+class Circle{
+    private:
+        double radian, degree, area = 0.0;
+        double allVal[4];
+    protected:
+        double radius;
+        const double PI = 3.14159;
+    public:
+        Circle(){
+            radius = 0.0;
+            radian = 0.0;
+            degree = 0.0;
+        }
+
+        Circle(double radius, double radian, double degree){
+            this->radius = radius;
+            this->radian = radian;
+            this->degree = degree;
+        }
+
+        void print() const{
+            cout << "Radius: " << radius << "\t"
+                 << "Radian: " << radian << "\t"
+                 << "Degree: " << degree << "\t"
+                 << "Area: " << area << endl;
+        }
+
+        void setVal(double radius, double d){
+            this->radius = radius;
+            degree = d;
+        }
+
+        double* getVal(){
+            // allVal[4] = {radius, radian, degree, area}; DOESNT WORK!
+            allVal[0] = radius;
+            allVal[1] = radian;
+            allVal[2] = degree;
+            allVal[3] = area;
+            return allVal;
+        }
+
+        void calcRadian(){
+            radian = degree * PI / 180;
+        }
+
+        double calcArea(){
+            area = PI * radius * radius;
+            return area;
+        }
+
+        double calcVol(){
+            return 20; // just to make it compile
+        }
+
+        ~Circle(){
+            cout << "Circle destructed" << endl;
+        }
+};
+
+class Cylinder;
+
+class Cone: public Circle{
+    friend void compareSmaller(Cylinder cone, Cone cylinder);
+    private:
+        double height, area, volume;
+    public:
+        Cone(): Circle(){
+            height = 0.0;
+            area = 0.0;
+            volume = 0.0;
+        }
+
+        Cone(double radius, double height)
+            : Circle(radius, 0.0, 0.0){ // MEET NUMBER OF ARGUMENTS
+                this->height = height;
+            }
+            
+        void print() const{
+            cout << "Radius: " << radius << "\t"
+                 << "Height: " << height << "\t"
+                 << "Area: " << area << "\t"
+                 << "Volume: " << volume << endl;
+        }
+
+        void setDimension(double r, double h){
+            radius = r;
+            Cone::height = h;
+        }
+
+        double calculateArea(){
+            area = PI * radius * (radius + sqrt(height*height + radius*radius));
+            return area;
+        }
+
+        double calculateVol(){
+            volume = PI * radius * radius * height / 3;
+            return volume;
+        }
+
+        ~Cone(){
+            cout << "Cone destructed" << endl;
+        }
+};
+
+class Cylinder: public Circle{
+    friend void compareSmaller(Cylinder cone, Cone cylinder);
+    private:
+        double volume;
+        Circle circle;
+    protected:
+        double height; // cus question says private only havev volume and Circle composition
+    public:
+        Cylinder(double radius = 0.0, double height = 0.0)
+            :Circle(radius, 0.0, 0.0){ // MEET NUMBER OF ARGUMENTS
+                this->height = height;
+            }
+
+        void print(){
+            cout << "Radius: " << radius << "\t" << "Height: " << height << "Area: " 
+            << (2 * PI * radius * radius)+ (2 * PI * radius * height) << "\t" << "Volume: " << volume << endl;
+        }
+
+        void setDimension(double r, double h){
+            radius = r;
+            height = h;
+        }
+
+        void calculateVol(){
+            volume = PI * radius * radius * height;
+        }
+
+        ~Cylinder(){
+            cout << "Cylinder destructed" << endl;
+        }
+};
+
+void compareSmaller(Cone cone, Cylinder cylinder){
+    if(cone.calculateArea() < cylinder.calcArea())
+        cout << "Cone has smaller area" << endl;
+    else
+        cout << "Cylinder has smaller area" << endl;
+
+    if(cone.calculateVol() < cylinder.calcArea())
+        cout << "Cone has smaller volume" << endl;
+    else
+        cout << "Cylinder has smaller volume" << endl;
+}
+
+bool operator==(Cone cone, Cylinder cylinder){
+    return (cone.calculateArea() == cylinder.calcArea() && cone.calculateVol() == cylinder.calcVol());
+}
+
+int main(){
+    // Tuto foo Q3a
+    Cone cone(5.0, 10.0);
+    Cylinder cylinder(5.0, 10.0);
+    compareSmaller(cone, cylinder);
+
+    // Tuto foo Q3b
+    if(cone == cylinder){
+        cout << "Surface area and volume of prism and cube are the same" << endl;
+    }
+    else{
+        cout << "Surface area and volume of prism and cube are not the same" << endl;
+    }
+}
+*/
+
+// Tuto foo Q4 (to be continued later)
+/*
+class Author; // forward declaration
+class Book{
+    private:
+        int ID;
+        string type, genre;
+    public:     
+        Book(){}  // need this default constructor cus got composition
+        
+        Book(int ID, string type, string genre){ 
+            this->ID = ID;
+            this->type = type;
+            this->genre = genre;
+
+            Author author;
+            setBooks(author);
+        }
+
+        void setBooks(Author& author){
+            for(int i = 0 ; i<author.numBooks ; i++){
+                cout << "Enter book " << i+1 << " name: ";
+                cin >> author.books[i];
+            }
+        }
+
+        void print(Author& author){
+            cout << "Author name: " << author.name << endl;
+            cout << "Author hometown: " << author.hometown << endl;
+            cout << "Author number of books: " << author.numBooks << endl;
+            cout << "Book ID: " << ID << endl;
+            cout << "Book type: " << type << endl;
+            cout << "Author books: " << endl;
+            for(int i = 0 ; i<author.numBooks ; i++){
+                cout << author.books[i] << endl;
+            }
+        }
+        
+};
+
+class Author{
+    friend class Book;
+    private:
+        Book book;
+        string name, hometown, *books;
+        int numBooks = 0;
+    public:
+        Author(){} // need this default constructor cus got composition
+        Author(string name, string hometown, int numBooks, int bookID, string type, string genre)
+            :Book(bookID, type, genre){
+                this->name = name;
+                this->hometown = hometown;
+                this->numBooks = numBooks;
+                books = new string[numBooks];
+                book.setBooks(*this);
+        }
+
+};
+
+int main(){
+    Author author1("author1", "Kuala Lumpur", 3);
+    Book book;
+    book.print(author1);
+
+    return 0;
+}
+*/
+int main(){
+    Author author1("author1", "Kuala Lumpur", 3);
+    Book book;
+    book.print(author1);
+
+    return 0;
+}
 

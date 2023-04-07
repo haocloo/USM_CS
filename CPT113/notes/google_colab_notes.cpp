@@ -18,7 +18,8 @@
     test.cpp (int main())
   ____________________________________________________________________________*/
 %%writefile test.cpp
-#include "test.h"
+#include "test.h"                         
+#include "test.cpp" // no need in google colab but need in vscoode
 
 // include directives
 // write code here

@@ -174,3 +174,6 @@ arr = {}
 
 // dynamic memory allocation remember to 
 delete [] arr
+
+// remember the format for function defintion
+type class::method() const

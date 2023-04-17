@@ -489,7 +489,7 @@ int main(){
 // ---------------------------------- Week 4 ----------------------------------
 // Inheritance and composition
 
-// Q1 part 1
+// W4 Q1 part 1
 class Shape{
     private:
         double height, width;
@@ -518,7 +518,7 @@ class Shape{
         ~Shape(){}
 };
 
-// Q1 part 2
+// W4 Q1 part 2
 class Prism : public Shape{
     private:
         double volume;
@@ -544,7 +544,7 @@ class Prism : public Shape{
         ~Prism(){}
 };
 
-// Q1 part 3
+// w4 Q1 part 3
 class Cube{
     private:
         double volume;
@@ -596,7 +596,7 @@ int main(){
     return 0;
 }
 // ----------------------------------------------------------------------------
-// Q2 part 1
+// W4 Q2 part 1
 class Circle{
     private:
         double radian, degree, area;
@@ -644,7 +644,7 @@ class Circle{
         ~Circle(){}
 };
 
-// Q2 part 2
+// W4 Q2 part 2
 class Cone : public Circle{
     private:
         double height, area, volume;
@@ -676,7 +676,7 @@ class Cone : public Circle{
         ~Cone(){}
 };
 
-// Q2 part 3
+// W4 Q2 part 3
 class Cylinder{
     private:
         double volume, height;
@@ -703,7 +703,7 @@ class Cylinder{
         ~Cylinder(){}
 };
 
-// Q2 part 4
+// W4 Q2 part 4
 class Ellipse: public Circle{
     private:
         double shortRadius;

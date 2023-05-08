@@ -83,4 +83,32 @@ Courier o-- Delivery_Centre
 
 
 ```
+```mermaid
+classDiagram
+    class Cone{
+        - volume: double
+        - SA: double
+        + Cone(v: double, SA: double)
+        <<constructor>>
+        + compare(cone1: Cone, cone2: Cone, cylinder1: Cylinder, cylinder2: Cylinder): void
+        <<friend>>
+    }
 
+    class Cylinder{
+        - volume: double
+        - SA: double
+        + Cylinder(v: double, SA: double)
+        <<constructor>>
+        + compare(cone1: Cone, cone2: Cone, cylinder1: Cylinder, cylinder2: Cylinder): void
+        <<friend>>
+    }
+
+    Cone --|> Cylinder : extends
+
+    class compare{
+        + compare(cone1: Cone, cone2: Cone, cylinder1: Cylinder, cylinder2: Cylinder): void
+        <<friend>>
+    }
+
+
+```

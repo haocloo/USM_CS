@@ -46,7 +46,7 @@ int main(){
     // W2 Q1c
     // array of structs using pointers
     Student *stuList = new Student[5];
-    ifstream file("W2_Q1b.txt", ios::out); // read file
+    ifstream file("W2_Q1b.txt", ios::in); // read file
 
     string name, Desasiswa, line;
     int ID, Year, Semester;
@@ -278,7 +278,6 @@ int main(){
     cout << "Total area of the 3 rooms : " << kitchen.getArea() + bedroom.getArea() + den.getArea() << endl;
     return 0;
 }
-
 
 // W2 Q7
 struct Weather{
@@ -739,4 +738,425 @@ int main(){
     Ellipse ellipse(5,3);
     cout << "Area: " << ellipse.calcArea() << endl;
     return 0;
+}
+
+// ----------------------------------------------------------------------------
+// W5 Q1
+// friend function/class still uses the object to access private member
+// but object only cannot access private members
+
+// FORWARD DECLARATION needed for friend FUNCTION and operator overloading
+class Cube;
+
+class Prism{
+    friend void compareValues(const Prism prism, const Cube cube);
+    private:
+        double volume = 3, surface_area =2;
+    public:
+        double getVol() const{return volume;}
+        double getSA() const{return surface_area;}
+        void operator==(const Prism& right) const;
+};
+
+class Cube{
+    friend void compareValues(const Prism prism, const Cube cube);
+    private:
+        double volume = 2, surface_area =2;
+    public:
+        double getVol() const{return volume;}
+        double getSA() const{return surface_area;}
+        void operator==(const Cube& right) const;
+};
+
+void Prism::operator==(const Prism& right) const{
+    if(volume == right.getVol()){
+        cout << "Volume of Prism is same with Cube" << endl;
+    }
+    else{
+        cout << "Volume of Cube is not same with Prism" << endl;
+    }
+
+    if(surface_area == right.getSA()){
+        cout << "Surface Area of Prism is same with Cube" << endl;
+    }
+    else{
+        cout << "Surface Area of Cube is not same with Prism" << endl;
+    }
+}
+
+void Cube::operator==(const Cube& right) const{
+    if(volume == right.getVol()){
+        cout << "Volume of Cube is same with Prism" << endl;
+    }
+    else{
+        cout << "Volume of Prism is not same with Cube" << endl;
+    }
+
+    if(surface_area == right.getSA()){
+        cout << "Surface Area of Cube is same with Prism" << endl;
+    }
+    else{
+        cout << "Surface Area of Prism is not same with Cube" << endl;
+    }
+}
+
+void compareValues(const Prism prism, const Cube cube){ // cant use const behind
+    if(cube.volume > prism.volume){
+        cout << "Volume of Cube is bigger than Prism" << endl;
+    }
+    else{
+        cout << "Volume of prism is bigger than Cube" << endl;
+    }
+
+    if(cube.surface_area > prism.surface_area){
+        cout << "Surface Area of Cube is bigger than Prism" << endl;
+    }
+    else{
+        cout << "Surface Area of Prism is bigger than Cube" << endl;
+    }
+}
+
+int main(){
+    Prism prism, prism2;
+    Cube cube, cube2;
+    compareValues(prism, cube);
+    cout << endl;
+    prism == prism2;
+    cube == cube2;
+    return 0;
+}
+
+// W5 Q2
+class Student{
+    // make Person class a friend of Student class 
+    // grant Student class access to Person class private members
+    friend class Person;
+    private:
+        int studentID;
+        string school, desa;
+    public:
+        Student(int id, string school, string desa)
+            : studentID(id), school(school), desa(desa) {}
+};
+
+class Person{
+    private:
+        string name, state, *schools;
+        int size;
+        Student student;  // composition for constructor and friend class
+    public:
+        Person (string n, string s, string *schls, int size, int id, string school, string desa)  // note : *schls
+            : name(n), state(s), size(size), schools(new string[size]), student(id, school, desa) {
+                for (int i = 0; i < size; i++){
+                    schools[i] = schls[i];
+                }
+            }
+        
+        void print() const{
+            cout << "Student ID: " << student.studentID << endl;
+            cout << "School: " << student.school << endl;
+            cout << "Desa: " << student.desa << endl;
+            cout << "Name: " << name << endl;  //use case of friend class
+            cout << "State: " << state << endl;
+            cout << "Schools: ";
+            for(int i = 0 ; i < size ; i++){
+                if(i == size - 1)
+                    cout << schools[i] << endl;
+                else
+                    cout << schools[i] << ", ";
+            }
+        }
+
+        ~Person(){
+            delete[] schools;
+        }
+};
+
+int main(){
+    string schools[5] = {"SMK", "SK", "SJKC", "SJK", "SMT"};
+    Person person("John", "Selangor", schools, 5, 123, "SMK", "Desa Aman");
+    person.print();
+    return 0;
+}
+
+// W5 Q3
+class Cylinder;
+
+class Cone{
+    friend void compare(Cone cone1, Cone cone2, Cylinder cylinder1, Cylinder cylinder2);
+    private:
+        double volume,SA;
+    public:
+        Cone(double v, double SA): volume(v), SA(SA){}
+};
+
+class Cylinder{
+    friend void compare(Cone cone1, Cone cone2, Cylinder cylinder1, Cylinder cylinder2);
+    private:
+        double volume,SA;
+    public:
+        Cylinder(double v, double SA): volume(v), SA(SA){}
+};
+
+void compare(Cone cone1, Cone cone2, Cylinder cylinder1, Cylinder cylinder2){
+    if(cone1.volume < cone2.volume)
+        cout << "Cone2 has less volume than cone :" << cone2.volume << endl;
+    else if(cone1.volume > cone2.volume)
+        cout << "Cone1 has more volume than Cylinder :" << cone1.volume << endl;
+    else
+        cout << "Cone1 and Cone2 have the same volume" << endl;;
+
+    cout << endl;
+    
+    if(cylinder1.volume < cylinder2.volume)
+        cout << "Cylinder2 has less volume than Cylinder :" << cylinder2.volume << endl;
+    else if(cylinder1.volume > cylinder2.volume)
+        cout << "Cylinder1 has more volume than Cylinder :" << cylinder1.volume << endl;
+    else
+        cout << "Cylinder1 and Cylinder2 have the same volume" << endl;;
+
+    cout << endl;
+
+    if(cone1.SA < cone2.SA)
+        cout << "Cone2 has less surface area than cone :" << cone2.SA << endl;
+    else if(cone1.SA > cone2.SA)
+        cout << "Cone1 has more surface area than Cylinder :" << cone1.SA << endl;
+    else
+        cout << "Cone1 and Cone2 have the same surface area" << endl;;
+
+    cout << endl;
+
+    if(cylinder1.SA < cylinder2.SA)
+        cout << "Cylinder2 has less surface area than Cylinder :" << cylinder2.SA << endl;
+    else if(cylinder1.SA > cylinder2.SA)
+        cout << "Cylinder1 has more surface area than Cylinder :" << cylinder1.SA << endl;
+    else
+        cout << "Cylinder1 and Cylinder2 have the same surface area" << endl;;
+}
+
+int main(){
+    Cone cone1(1,2), cone2(3,4);
+    Cylinder cylinder1(1,2), cylinder2(5,6);
+    compare(cone1, cone2, cylinder1, cylinder2);
+    return 0;
+}
+
+// W5 Q4
+class Author{   // need to be on top cus using friend class like author.member
+    friend class Book; // make book class friend class for author (allow book class to access author)
+    private:
+        string name, hometown, *genres;
+        int size;
+    public:
+        Author(string name, string hometown, string *genres, int size)
+            :name(name), hometown(hometown), size(size), genres(new string[size]){    //genres not *genres here
+                for(int i = 0 ; i < size ; i++){    // need to store size in private member, sizeof(genres) wont work
+                    this->genres[i] = genres[i];
+                }
+            }
+
+        ~Author(){
+            delete [] genres;
+        }
+};
+
+class Book{
+    private:
+        int ID;
+        string type, genre;
+        Author author;
+    public:
+        Book(int ID, string type, string genre, string name, string hometown, string *genres, int size)
+            : ID(ID), type(type), genre(genre), author(name, hometown, genres, size){}   // genre not *genre here
+        
+        void print() const{
+            cout << "Size: " << author.size << endl;
+            cout << "Author: " << author.name << endl;
+            cout << "Hometown: " << author.hometown << endl;
+            cout << "Genres: ";
+            for(int i = 0 ; i < author.size ; i++){
+                if(i < author.size - 1)
+                cout << author.genres[i] << " ";
+            }
+            cout << "ID: " << ID << endl;
+            cout << "Type: " << type << endl;
+            cout << "Genre: " << genre << endl;
+        }
+};
+
+int main(){
+    string genres[3] = {"Fantasy", "Sci-Fi", "Horror"};
+    Author author("J.K. Rowling", "London", genres, 3);
+    Book book(1, "Hardcover", "Fantasy", "J.K. Rowling", "London", genres, 3);
+    book.print();
+    return 0;
+}
+
+// --------------------------------------------------------------------------------");
+// W6 Q1,Q2 ans, refer pdf
+
+// W6 Q3
+// accept any type of argument
+template <typename T>
+double half (T value){ 
+    return static_cast<double>(value/2);
+}
+
+
+// --------------------------------------------------------------------------------");
+// W7 Q1,Q2,Q3 ans, refer pdf
+// W7 Q4
+class IntList{
+    private:
+        struct ListNode{
+            int value;
+            struct ListNode *next;
+        };
+        ListNode *head;
+    public:
+        IntList(){ head = nullptr;}
+        ~IntList() { 
+            ListNode *nodePtr, *nextNode;
+            nodePtr = head;
+            while(nodePtr != nullptr){
+                nextNode = nodePtr->next;
+                delete nodePtr;
+                nodePtr = nextNode;
+            }
+        }
+
+        void appendNode(int num){
+            ListNode *newNode = new ListNode;
+            newNode->value = num;
+            newNode->next = nullptr;
+
+            if(!head)
+                head = newNode;
+            else{
+                ListNode *nodePtr = head;
+                while(nodePtr->next)
+                    nodePtr = nodePtr->next;
+                nodePtr->next = newNode;
+            }
+        }
+
+        void insertNode(int num){
+            ListNode *newNode, *nodePtr, *previousNode;
+            newNode = new ListNode;
+            newNode->value = num;
+
+            if(!head){
+                head = newNode;
+                newNode->next = nullptr;
+            }
+            else{
+                nodePtr = head;
+                previousNode = nullptr;
+
+                while(nodePtr != nullptr && nodePtr->value < num){
+                    previousNode = nodePtr;
+                    nodePtr = nodePtr->next;
+                }
+
+                if(previousNode == nullptr){
+                    head = newNode;
+                    newNode->next = nodePtr;
+                }
+
+                else{
+                    previousNode->next = newNode;
+                    newNode->next = nodePtr;
+                }
+            }
+        }
+
+        void deleteNode(int num){
+            ListNode *nodePtr, *previousNode = nullptr;
+            if(!head) return;
+            
+            // first node equal to num
+            if (head->value == num){
+                nodePtr = head->next;
+                delete head;
+                head = nodePtr;
+            }
+            else{
+                nodePtr = head;
+                while(nodePtr != nullptr && nodePtr->value != num){
+                    previousNode = nodePtr;
+                    nodePtr = nodePtr->next;
+                }
+                if(nodePtr){
+                    previousNode->next = nodePtr->next;
+                    delete nodePtr;
+                }
+            }
+        }
+
+        void displayList(){
+            ListNode *nodePtr = nullptr;
+            nodePtr = head;
+            while(nodePtr){
+                cout << nodePtr->value << " ";
+                nodePtr = nodePtr->next;
+            }
+        }
+};
+
+int main(){
+    IntList list;
+    list.appendNode(2);
+    list.appendNode(3);
+    list.appendNode(4);
+
+    cout << "Initial list: ";
+    list.displayList();
+    cout << endl;
+
+    list.insertNode(5);
+    cout << "After inserting 5: ";
+    list.displayList();
+    cout << endl;   
+
+    list.deleteNode(3);
+    cout << "After deleting 3: ";
+    list.displayList();
+    cout << endl;
+
+    return 0;
+}
+
+// W7 Q5
+void IntList::insert(int value, int pos)
+{
+    ListNode* newNode = new ListNode;
+    newNode-> value = value;
+    newNode->next = nullptr;
+
+    
+    if(head == nullptr){
+        head = newNode;
+        return;
+    }
+
+    if(pos ==0){
+        newNode->next = head;
+        head = newNode;
+        return;
+    }
+
+    ListNode* nodePtr = head;
+    int numberToSkip = 1;
+
+    while(numberToSkip <= pos){
+        if(nodePtr->next == nullptr || numberToSkip == pos)
+        {
+            ListNode* nextNode = nodePtr->next;
+            nodePtr->next = newNode;
+            newNode->next = nextNode;
+            return;
+        }
+        nodePtr = nodePtr->next;
+        numberToSkip++;
+    }
 }

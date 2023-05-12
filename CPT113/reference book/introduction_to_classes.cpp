@@ -744,13 +744,13 @@ int main(){
         cout << "Enter date: ";
         cin >> day;
         date.setDay(day);
-    }while(day<1 && day>31);
+    }while(day<1 || day>31);
 
     do{
         cout << "Enter month: ";
         cin >> month;
         date.setMonth(month);
-    }while(month<1 && month>31);
+    }while(month<1 || month>31);
 
     cout << "Enter year: ";
     cin >> year;
@@ -1775,7 +1775,7 @@ int main(){
         do{
             cout << "Do you want to add(0), remove(1) a visitor or exit program (2)?";
             cin >> choice;
-        }while(choice <0 && choice>2);
+        }while(choice <0 || choice>2);
 
         if(choice == 0)
             v.addVisitor();
@@ -2119,7 +2119,7 @@ int main(){
     return 0;
 }
 
-
+86/3 = 
 
 // 15. Mortgage Payment
 // Design a class that will determine the monthly payment on a home mortgage. The 

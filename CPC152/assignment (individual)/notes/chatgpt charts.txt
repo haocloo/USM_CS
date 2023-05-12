@@ -1,0 +1,173 @@
+
+
+
+1. Scatter plot: Explore the relationship between age and fare, with color-coding based on survival.
+
+2. Line chart: Visualize the survival rate over different age ranges or fare ranges.
+
+3. Bar chart: Show the count of passengers in each passenger class (pclass) or the number of passengers embarked from each location (embarked).
+
+4. Pie chart: Display the distribution of passengers' gender (sex) or the survival rate by passenger class.
+
+5. Bubble chart: Illustrate the relationship between fare, age, and survival, with bubble sizes representing the number of siblings/spouses (sibsp) or parents/children (parch) aboard.
+
+6. Dot plot: Compare the ages of male and female passengers or the fares paid by passengers in different passenger classes.
+
+7. Filled area plot: Track the cumulative survival rate over time.
+
+8. Horizontal bar chart: Present the top 10 passenger names with the highest fares.
+
+9. Gantt chart: Show the duration of each passenger's survival or highlight the time interval when the Titanic embarked from each location.
+
+10. Sunburst chart: Display the hierarchical breakdown of survival by passenger class, gender, and age ranges.
+
+
+
+
+
+
+1. Sankey diagram: Visualize the flow of passengers based on their survival, passenger class, and embarked location.
+
+2. Treemap: Display the distribution of passengers across different passenger classes or age ranges.
+
+3. Table: Present summary statistics and key insights, such as the overall survival rate and demographic breakdowns.
+
+4. ML regression: Use machine learning regression algorithms to predict fare based on relevant features like passenger class, age, and embarked location. Visualize the predicted fares compared to the actual fares using scatter plots.
+
+5. kNN classification: Implement a k-nearest neighbors classification model to predict survival based on features like age, passenger class, and sex. Evaluate the model's accuracy and visualize the classification results using a confusion matrix or a scatter plot with color-coding.
+
+6. ROC and PR curves: Assess the performance of your survival prediction model by plotting the receiver operating characteristic (ROC) curve and precision-recall (PR) curve. This helps in evaluating the model's ability to discriminate between survival and non-survival instances.
+
+7. PCA visualization: Apply principal component analysis (PCA) to reduce the dimensionality of your dataset and visualize the passengers' characteristics in a lower-dimensional space.
+
+8. t-SNE and UMAP projections: Utilize t-distributed Stochastic Neighbor Embedding (t-SNE) or Uniform Manifold Approximation and Projection (UMAP) to create 2D or 3D projections of your dataset, highlighting clusters or patterns in the data.
+
+9. Box plot: Compare the distribution of fares across different passenger classes or survival outcomes using box plots.
+
+10. Histogram: Analyze the distribution of passengers' ages or fares using histograms to identify patterns or anomalies.
+
+
+
+
+
+
+
+1. Distplot: Visualize the distribution of ages or fares using a histogram with a smooth kernel density estimate.
+
+2. 2D histogram: Explore the relationship between age and fare by creating a 2D histogram with color-coding based on the frequency of data points.
+
+3. 2D histogram contour: Enhance the 2D histogram by overlaying contour lines to highlight regions of higher density.
+
+4. Scatterplot matrix: Create a matrix of scatter plots to examine the pairwise relationships between different variables, such as age, fare, and survival.
+
+5. Facet and trellis plot: Split the data into subsets based on a categorical variable (e.g., passenger class or sex) and create small multiples of scatter plots or histograms to compare distributions or relationships within each subset.
+
+6. Tree plot: Construct a tree-like diagram to display hierarchical relationships between variables, such as survival, passenger class, and age.
+
+7. Violin plot: Present the distribution of ages or fares as violin shapes, combining a box plot with a rotated kernel density plot.
+
+8. Parallel categories diagram: Illustrate the relationships between multiple categorical variables, such as passenger class, sex, and survival, using parallel lines to represent different categories.
+
+9. Marginal distribution plot: Combine a scatter plot with marginal distribution plots (e.g., histograms or kernel density estimates) to visualize the joint distribution and individual distributions of two variables simultaneously.
+
+10. Strip chart: Display the distribution of a continuous variable (e.g., age) as a sequence of evenly spaced vertical marks, facilitating the comparison of data points.
+
+
+
+
+
+
+1. Contour plot: Visualize the relationship between age, fare, and survival using contour lines to represent different levels of density or probability.
+
+2. Heatmap: Create a heatmap to display the correlation matrix of numerical variables, such as age, fare, and number of siblings/spouses (sibsp).
+
+3. Imshow: Present a 2D grid of values, such as the count of passengers in different age and fare ranges, using an image-like representation.
+
+4. Ternary plot: Plot the distribution of passengers based on three variables, such as age, fare, and survival, using a triangular coordinate system.
+
+5. Parallel coordinates plot: Represent the relationships and patterns between multiple numerical variables, such as age, fare, and number of parents/children (parch), using parallel axes.
+
+6. Log plot: Display numerical variables, such as fare or age, on a logarithmic scale to visualize their distribution or relationships.
+
+7. Dendrogram: Create a tree-like diagram to illustrate hierarchical clustering of passengers based on their characteristics, such as age, fare, and survival.
+
+8. Annotated heatmap: Enhance a heatmap by adding annotations to cells, such as displaying the actual values or percentages for each data point.
+
+9. Wind rose chart: Showcase the distribution of passengers' embarked locations (embarked) using a circular chart with radial bars indicating frequency or proportions.
+
+10. Ternary contour plot: Extend the ternary plot by incorporating contour lines to depict density or probability levels for three variables simultaneously, such as age, fare, and survival.
+
+These visualization techniques offer diverse ways to analyze and present the information in your dataset. Based on your research questions and the insights you wish to emphasize, you can select the most suitable visualizations.
+
+While the Plotly library offers a wide range of visualization options, some of the suggested chart types may not be suitable for the Titanic dataset. Here are the suitable visualizations for your EDA using the given variables:
+
+1. Ternary overlay: Since the Titanic dataset does not include explicit ternary relationships, this visualization may not be suitable.
+
+2. Quiver plot: A quiver plot represents vector fields, which are not applicable to the Titanic dataset variables.
+
+3. Streamline plot: Similar to the quiver plot, a streamline plot is not relevant for the Titanic dataset.
+
+4. Network graph: Explore the relationships between variables like passenger class, sex, and survival using a network graph to represent connections or dependencies.
+
+5. Radar chart: Display the characteristics of passengers across different variables, such as age, fare, and survival, using a radar-like visualization.
+
+6. Carpet plot: This visualization is not suitable for the Titanic dataset.
+
+7. Carpet scatter plot: Similarly, a carpet scatter plot is not applicable to the Titanic dataset.
+
+8. Carpet contour plot: This visualization is not suitable for the Titanic dataset.
+
+9. Polar chart: Represent the distribution or relationships of variables, such as passenger class, age, or survival, using a circular polar chart.
+
+10. Waterfall chart: Showcase changes in a variable, such as fare, by visually depicting the contributions of different factors (e.g., passenger class, age, and embarked location) in a waterfall-like visualization.
+
+
+
+
+
+1. Indicator: Create indicators or gauges to display summary statistics or key metrics such as the overall survival rate or the average fare.
+
+2. Candlestick chart: If you have time-related data, you can use a candlestick chart to visualize the open, high, low, and close values of a variable over time.
+
+3. Funnel chart: Showcase the progression or conversion rates of passengers across different stages, such as survival rate by passenger class or embarkation location.
+
+4. Time series: Analyze and plot the changes in a variable, such as survival rate, fare, or age, over time to identify trends or patterns.
+
+5. OHLC chart: If you have time-related data that includes open, high, low, and close values, you can create an OHLC (Open-High-Low-Close) chart to visualize the fluctuations of a variable.
+
+6. Gauge chart: Display a single value within a gauge-like visualization to represent metrics such as survival rate or average fare.
+
+7. Bullet chart: Present multiple metrics or targets within a single visual to compare and assess performance across different variables or categories.
+
+8. Mapbox map layers: Utilize Mapbox integration in Plotly to showcase geographical data, such as the distribution of passengers across different embarkation locations or the survival rate by location.
+
+9. Mapbox density heatmap: Display the density or intensity of passengers or specific variables, such as fares or ages, using a heatmap overlay on a Mapbox map.
+
+
+
+
+1. Mapbox choropleth map: Use a choropleth map overlay on Mapbox to visualize geographical data, such as the survival rate or passenger count by location.
+
+2. Choropleth map: Similarly, create a choropleth map to display regional variations in a variable, such as the survival rate or average fare.
+
+3. Lines on maps: Plot lines on a map to show specific routes or connections related to the Titanic, such as the voyage path or embarkation ports.
+
+4. Lines on Mapbox: Utilize Mapbox integration in Plotly to showcase lines on the map, representing relevant connections or routes.
+
+5. Bubble maps: Display data points as bubbles on a map, where the size of the bubbles represents the count or intensity of a variable, such as passenger count or fare.
+
+6. Scatter plots on maps: Plot individual data points as markers on a map, indicating variables like age or fare.
+
+7. Scatter plots on Mapbox: Incorporate Mapbox to showcase scatter plots with markers on the map, displaying the relationship between variables and geographical locations.
+
+8. Filled area on map: Use a filled area map to visualize spatial patterns or variations of a variable across different regions.
+
+9. Mapbox hexbin: Implement hexbinning on a Mapbox map to aggregate data points into hexagonal bins, allowing you to visualize density or intensity in a more granular manner.
+
+10. 3D scatter plot and 3D surface plot: If you have additional dimensions or variables to consider, you can create 3D scatter plots or surface plots to explore their relationships with the existing variables.
+
+
+
+1. Subplots: Create a grid of multiple plots to compare and visualize various aspects of the Titanic dataset, such as survival rates by passenger class, age distributions, or fare comparisons.
+
+2. Multiple Axes: Utilize multiple axes within a single plot to display different variables or data series on separate y-axes, allowing for direct comparisons.
